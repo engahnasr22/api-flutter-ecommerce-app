@@ -21,7 +21,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 // Get a product by ID
-router.get('/product/:id', asyncHandler(async (req, res) => {
+router.get('/:id', asyncHandler(async (req, res) => {
     try {
         const productID = req.params.id;
         const product = await Product.findById(productID)
@@ -42,7 +42,7 @@ router.get('/product/:id', asyncHandler(async (req, res) => {
 
 
 // create new product
-router.post('/add-product', asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     try {
         // Execute the Multer middleware to handle multiple file fields
         uploadProduct.fields([
@@ -105,7 +105,7 @@ router.post('/add-product', asyncHandler(async (req, res) => {
 
 
 // Update a product
-router.put('/product/:id', asyncHandler(async (req, res) => {
+router.put('/:id', asyncHandler(async (req, res) => {
     const productId = req.params.id;
     try {
         // Execute the Multer middleware to handle file fields
@@ -169,7 +169,7 @@ router.put('/product/:id', asyncHandler(async (req, res) => {
 }));
 
 // Delete a product
-router.delete('/delete/:id', asyncHandler(async (req, res) => {
+router.delete('/:id', asyncHandler(async (req, res) => {
     const productID = req.params.id;
     try {
         const product = await Product.findByIdAndDelete(productID);
